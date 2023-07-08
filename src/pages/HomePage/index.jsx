@@ -1,7 +1,13 @@
+import { Helmet } from 'react-helmet-async';
+import BannerSlider from './BannerSlider/BannerSlider';
+
 const HomePage = () => {
   return (
     <>
-      <div>home page</div>
+      <Helmet>home page</Helmet>
+      <div className='container'>
+        <BannerSlider />
+      </div>
     </>
   );
 };
