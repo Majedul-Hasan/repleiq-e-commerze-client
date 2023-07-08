@@ -35,7 +35,7 @@ const SignupPage = () => {
   };
 
   return (
-    <section className=' flex flex-col md:flex-row dark:text-blue-200 justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 py-3 mx-5 md:mx-0 md:my-0'>
+    <section className='min-h-screen flex flex-col md:flex-row dark:text-blue-200 justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 py-3 mx-5 md:mx-0 md:my-0'>
       <div className='md:w-1/3 max-w-sm'>
         <img
           alt='Sample image'
