@@ -1,5 +1,13 @@
+import { Outlet } from 'react-router-dom';
+import Header from '../pages/shared/Header/Header';
+
 const MainLayout = () => {
-  return <div>MainLayout</div>;
+  return (
+    <>
+      <Header></Header>
+      <Outlet />
+    </>
+  );
 };
 
 export default MainLayout;
