@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import protect from '../assets/Online research_Monochromatic.svg';
 import { useState } from 'react';
+import useAuth from '../hooks/useAuth';
 
 const SignupPage = () => {
   const [firebaseError, setFirebaseError] = useState(null);
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
@@ -15,6 +17,11 @@ const SignupPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    createUser(data.email, data.password).then((response) => {
+      console.log(response.user);
+      updateUserProfile(data.name, data.image);
+    });
+
     console.log(data);
   };
 
