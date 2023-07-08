@@ -25,7 +25,7 @@ const Header = () => {
         <NavLink to='/'>Home</NavLink>
       </li>
       <li>
-        <NavLink to='/all-courses'>All Products</NavLink>
+        <NavLink to='/shop'>shop</NavLink>
       </li>
       <li>
         {role?.role === 'admin' ? (
