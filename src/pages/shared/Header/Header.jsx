@@ -57,11 +57,9 @@ const Header = () => {
           </li>
         </>
       ) : (
-        <>
-          <li>
-            <NavLink to='/login'>Login</NavLink>
-          </li>
-        </>
+        <li>
+          <NavLink to='/login'>Login</NavLink>
+        </li>
       )}
     </>
   );
@@ -92,7 +90,7 @@ const Header = () => {
             {navOptions}
           </ul>
         </div>
-        <a className='btn btn-ghost normal-case text-xl'>repleIQ</a>
+        <a className='btn btn-ghost normal-case text-2xl font-bold'>repleIQ</a>
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>{navOptions}</ul>

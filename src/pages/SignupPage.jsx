@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import protect from '../assets/Online research_Monochromatic.svg';
 import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
+import SocialLogin from './shared/SocialLogin';
 
 const SignupPage = () => {
   const [firebaseError, setFirebaseError] = useState(null);
@@ -17,16 +18,24 @@ const SignupPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password).then((response) => {
-      console.log(response.user);
-      updateUserProfile(data.name, data.image);
-    });
+    createUser(data.email, data.password)
+      .then((response) => {
+        console.log(response.user);
+        updateUserProfile(data.name, data.image);
+        reset();
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setFirebaseError(errorMessage);
+
+        // ..
+      });
 
     console.log(data);
   };
 
   return (
-    <section className='h-screen flex flex-col md:flex-row dark:text-blue-200 justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0'>
+    <section className=' flex flex-col md:flex-row dark:text-blue-200 justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 py-3 mx-5 md:mx-0 md:my-0'>
       <div className='md:w-1/3 max-w-sm'>
         <img
           alt='Sample image'
@@ -34,7 +43,7 @@ const SignupPage = () => {
         />
       </div>
       <div className='md:w-1/3 max-w-sm'>
-        {/* // social login */}
+        <SocialLogin />
         <div className='my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300'>
           <p className='mx-4 mb-0 text-center font-semibold text-slate-500'>
             Or
