@@ -1,11 +1,23 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+
   const role = {
     role: 'admin',
   };
-  const user = false;
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => console.log(error));
+  };
+
   const pendingNumber = 5;
   const navOptions = (
     <>
@@ -49,11 +61,7 @@ const Header = () => {
             <NavLink to='/profile'>{user?.displayName}</NavLink>
           </li>
           <li className='flex items-center'>
-            <span
-            // onClick={handleLogOut}
-            >
-              LogOut
-            </span>
+            <span onClick={handleLogOut}>LogOut</span>
           </li>
         </>
       ) : (
@@ -94,9 +102,6 @@ const Header = () => {
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>{navOptions}</ul>
-      </div>
-      <div className='navbar-end'>
-        <a className='btn'>Button</a>
       </div>
     </div>
   );

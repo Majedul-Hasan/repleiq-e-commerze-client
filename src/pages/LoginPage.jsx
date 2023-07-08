@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 import shopping from '../assets/Online shopping _Flatline.svg';
@@ -8,20 +8,25 @@ import SocialLogin from './shared/SocialLogin';
 
 const LoginPage = () => {
   const [firebaseError, setFirebaseError] = useState(null);
-  const { createUser, updateUserProfile } = useAuth();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+  const from = location.state?.from?.pathname || '/';
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
+    signIn(data.email, data.password)
       .then((response) => {
         console.log(response.user);
-        updateUserProfile(data.name, data.image);
+
         reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
