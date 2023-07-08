@@ -1,4 +1,70 @@
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+
 const Header = () => {
+  const role = {
+    role: 'admin',
+  };
+  const user = false;
+  const pendingNumber = 5;
+  const navOptions = (
+    <>
+      <li>
+        <NavLink to='/'>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to='/all-courses'>All Products</NavLink>
+      </li>
+      <li>
+        {role?.role === 'admin' ? (
+          <NavLink to='/dashboard/admin-home'>
+            <span>
+              Dashboard{' '}
+              <span className='absolute -top-1 badge bg-amber-500'>
+                {pendingNumber}
+              </span>
+            </span>
+          </NavLink>
+        ) : role?.role === 'instructor' ? (
+          <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
+        ) : role?.role === 'student' ? (
+          <NavLink to='/dashboard/student-home'>Dashboard</NavLink>
+        ) : null}
+      </li>
+      <li>
+        <NavLink to='/dashboard/selected-classes'>
+          <div>
+            <p className='mt-1'>
+              <FaShoppingCart></FaShoppingCart>
+            </p>
+            <span className='absolute -top-1 -right-2 badge bg-amber-500'>
+              {/* {cart?.length || 0} */}0{' '}
+            </span>
+          </div>
+        </NavLink>
+      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink to='/profile'>{user?.displayName}</NavLink>
+          </li>
+          <li className='flex items-center'>
+            <span
+            // onClick={handleLogOut}
+            >
+              LogOut
+            </span>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink to='/login'>Login</NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <div className='navbar bg-base-100'>
       <div className='navbar-start'>
@@ -22,50 +88,14 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className='p-2'>
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl'>
+            {navOptions}
           </ul>
         </div>
-        <a className='btn btn-ghost normal-case text-xl'>daisyUI</a>
+        <a className='btn btn-ghost normal-case text-xl'>repleIQ</a>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal px-1'>
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <details>
-              <summary>Parent</summary>
-              <ul className='p-2'>
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+        <ul className='menu menu-horizontal px-1'>{navOptions}</ul>
       </div>
       <div className='navbar-end'>
         <a className='btn'>Button</a>
