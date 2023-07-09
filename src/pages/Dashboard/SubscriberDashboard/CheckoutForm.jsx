@@ -125,8 +125,7 @@ const CheckoutForm = ({ cart, price }) => {
         <button
           className='mt-4 bg-cyan-600  hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'
           type='submit'
-          // disabled={!stripe || !clientSecret || processing}
-        >
+          disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
       </form>

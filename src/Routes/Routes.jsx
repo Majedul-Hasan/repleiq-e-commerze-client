@@ -14,6 +14,7 @@ import ListUsers from '../pages/Dashboard/AdminDashboard/ListUsers';
 import SubscriberHome from '../pages/Dashboard/SubscriberDashboard/SubscriberHome';
 import SelectedProducts from '../pages/Dashboard/SubscriberDashboard/SelectedProducts';
 import Checkout from '../pages/Dashboard/SubscriberDashboard/Checkout';
+import PaymentsHistory from '../pages/Dashboard/SubscriberDashboard/PaymentsHistory';
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
           {
             path: 'payment',
             element: <Checkout />,
+          },
+          {
+            path: 'payment-history',
+            element: <PaymentsHistory />,
           },
         ],
       },
