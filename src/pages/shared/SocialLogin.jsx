@@ -13,7 +13,24 @@ const SocialLogin = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        navigate(from, { replace: true });
+
+const saveUser = {
+  name: loggedInUser.displayName,
+  email: loggedInUser.email,
+  role: 'subscriber',
+  joinAt: Date.now(),
+};
+fetch(`${import.meta.env.VITE_API}/users`, {
+  method: 'POST',
+  headers: {
+    'content-type': 'application/json',
+  },
+  body: JSON.stringify(saveUser),
+})
+  .then((res) => res.json())
+  .then(() => {
+    navigate(from, { replace: true });
+  });
 
         //
       })
