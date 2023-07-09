@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
-import useAuth from '../../../../hooks/useAuth';
+
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { imgHostingUrl } from '../../../../util/imgHostingUrl';
 import { swalWithBootstrapButtons } from '../../../../util/swalWithBootstrapButtons';
 
 const AddProduct = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
+
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {

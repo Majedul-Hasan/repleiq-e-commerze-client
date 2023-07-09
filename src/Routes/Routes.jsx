@@ -8,6 +8,7 @@ import ProductDetail from '../pages/ProductDetail/ProductDetail';
 import PrivateRoute from './PrivateRoute';
 import AddProduct from '../pages/Dashboard/AdminDashboard/AddProduct/AddProduct';
 import Dashboard from '../Layouts/Dashboard';
+import ListProduct from '../pages/Dashboard/AdminDashboard/ListProduct';
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ export const router = createBrowserRouter([
           {
             path: 'add-product',
             element: <AddProduct />,
+          },
+          {
+            path: 'manage-product',
+            element: <ListProduct />,
+            loader: () => fetch(`${import.meta.env.VITE_API}/products`),
           },
         ],
       },
