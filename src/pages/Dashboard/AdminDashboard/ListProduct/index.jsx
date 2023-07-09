@@ -1,16 +1,30 @@
 import { Helmet } from 'react-helmet-async';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BannerComp from '../../../shared/BannerComp/BannerComp';
 import { FaTrashAlt } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
+import { productDelete } from './ListProduct.action';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const ListProduct = () => {
-  const handleDelete = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const { data: products = [], refetch } = useQuery({
+    queryKey: ['products'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/products');
+      // const res = await fetch(`${import.meta.env.VITE_API}/users`);
+      // const res = await axiosSecure.get('/users');
+      // return res.data;
+      return res.data;
+    },
+  });
+
+  const handleDelete = (product) => {
     //    userDelete(user, refetch);
+    productDelete(product, refetch);
   };
 
-  const products = useLoaderData() || [];
-  console.log(products);
   return (
     <>
       <Helmet>

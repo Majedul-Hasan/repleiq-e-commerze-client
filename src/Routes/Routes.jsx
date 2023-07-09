@@ -60,7 +60,6 @@ export const router = createBrowserRouter([
           {
             path: 'manage-product',
             element: <ListProduct />,
-            loader: () => fetch(`${import.meta.env.VITE_API}/products`),
           },
         ],
       },
