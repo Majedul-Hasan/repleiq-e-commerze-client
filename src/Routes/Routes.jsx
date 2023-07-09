@@ -5,6 +5,9 @@ import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
 import ShopPage from '../pages/ShopPage';
 import ProductDetail from '../pages/ProductDetail/ProductDetail';
+import PrivateRoute from './PrivateRoute';
+import AddProduct from '../pages/Dashboard/AdminDashboard/AddProduct/AddProduct';
+import Dashboard from '../Layouts/Dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +34,29 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignupPage></SignupPage>,
+      },
+      {
+        path: 'dashboard',
+
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: 'admin-home',
+            element: (
+              <PrivateRoute>
+                <AddProduct />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: 'add-product',
+            element: <AddProduct />,
+          },
+        ],
       },
     ],
   },
