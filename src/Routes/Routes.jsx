@@ -10,6 +10,7 @@ import AddProduct from '../pages/Dashboard/AdminDashboard/AddProduct/AddProduct'
 import Dashboard from '../Layouts/Dashboard';
 import ListProduct from '../pages/Dashboard/AdminDashboard/ListProduct';
 import UpdateProduct from '../pages/Dashboard/AdminDashboard/UpdateProduct';
+import ListUsers from '../pages/Dashboard/AdminDashboard/ListUsers';
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
           {
             path: 'manage-product',
             element: <ListProduct />,
+          },
+          {
+            path: 'allusers',
+            element: <ListUsers />,
           },
           {
             path: 'update-product/:id',
