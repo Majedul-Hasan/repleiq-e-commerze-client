@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const ShopCard = () => {
+  
   return (
     <Link>
       <div className='relative group'>
@@ -16,7 +17,11 @@ const ShopCard = () => {
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div className='card-actions justify-end'>
               <button className='btn btn-primary'>Add To Cart</button>
-              <Link className='btn btn-primary'>view detail</Link>
+              <Link
+                to='/shop/>1212'
+                className='btn btn-primary'>
+                view detail
+              </Link>
             </div>
           </div>
         </div>
