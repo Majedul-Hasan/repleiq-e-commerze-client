@@ -1,9 +1,16 @@
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { handleAddToCartAction } from '../handleAddToCart';
+import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 
 const ShopCard = ({ product }) => {
+  const { user } = useAuth();
+  const [, refetch] = useCart();
+  const navigate = useNavigate();
+
   const handleAddToCart = (prod) => {
-    // handleAddToCartAction(course, user, refetch, navigate);
+    handleAddToCartAction(prod, user, refetch, navigate);
   };
 
   return (
