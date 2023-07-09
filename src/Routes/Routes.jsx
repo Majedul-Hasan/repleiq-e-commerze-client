@@ -15,6 +15,7 @@ import SubscriberHome from '../pages/Dashboard/SubscriberDashboard/SubscriberHom
 import SelectedProducts from '../pages/Dashboard/SubscriberDashboard/SelectedProducts';
 import Checkout from '../pages/Dashboard/SubscriberDashboard/Checkout';
 import PaymentsHistory from '../pages/Dashboard/SubscriberDashboard/PaymentsHistory';
+import ManageOrder from '../pages/Dashboard/AdminDashboard/ManageOrder';
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
           {
             path: 'payment-history',
             element: <PaymentsHistory />,
+          },
+          {
+            path: 'manage-order',
+            element: <ManageOrder />,
           },
         ],
       },

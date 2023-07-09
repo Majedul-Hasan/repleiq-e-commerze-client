@@ -58,8 +58,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/dashboard/history'>
-                  <FaBook></FaBook> Manage history
+                <NavLink to='/dashboard/manage-order'>
+                  <FaBook></FaBook> Manage Order
                 </NavLink>
               </li>
               <li>

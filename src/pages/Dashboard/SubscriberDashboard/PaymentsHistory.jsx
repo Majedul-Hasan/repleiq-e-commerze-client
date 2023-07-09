@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 
 import { Helmet } from 'react-helmet-async';
 
-import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 
@@ -66,7 +65,7 @@ const PaymentsHistory = () => {
                   </td>
                   <td className='text-end'>${item.price}</td>
                   <td>
-                    <Link> print </Link>
+                    <button> I got it </button>
                   </td>
                 </tr>
               ))}

@@ -3,10 +3,13 @@ import { FaShoppingCart } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
 import useCart from '../../../hooks/useCart';
+import { useEffect, useState } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Header = () => {
   const [cart] = useCart();
-
+  const [pendingNumber, setPendingNumber] = useState();
+  const [axiosSecure] = useAxiosSecure();
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [role] = useAdmin();
@@ -18,8 +21,16 @@ const Header = () => {
       })
       .catch((error) => console.log(error));
   };
-
-  const pendingNumber = 5;
+  useEffect(() => {
+    if (role?.role === 'admin') {
+      axiosSecure
+        .get(`${import.meta.env.VITE_API}/order/pending`)
+        .then((data) => {
+          console.log(data);
+          setPendingNumber(data.data.pending);
+        });
+    }
+  }, [role, axiosSecure]);
   const navOptions = (
     <>
       <li>
@@ -30,7 +41,7 @@ const Header = () => {
       </li>
       <li>
         {role?.role === 'admin' ? (
-          <NavLink to='/dashboard/admin-home'>
+          <NavLink to='/dashboard/manage-order'>
             <span>
               Dashboard{' '}
               <span className='absolute -top-1 badge bg-amber-500'>
