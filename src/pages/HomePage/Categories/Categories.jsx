@@ -1,4 +1,3 @@
-import React from 'react';
 import decor from '../../../assets/decor.jpg';
 import basket from '../../../assets/basket.jpg';
 import { Link } from 'react-router-dom';

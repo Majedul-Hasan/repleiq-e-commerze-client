@@ -1,6 +1,6 @@
 const BestProductCart = () => {
   return (
-    <div className='relative group'>
+    <div className='relative group w-96'>
       <div className='card w-96 bg-base-100 shadow-xl image-full'>
         <figure className='relative z-10'>
           <img
