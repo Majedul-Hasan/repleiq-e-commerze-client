@@ -39,11 +39,11 @@ const Header = () => {
             </span>
           </NavLink>
         ) : role?.role === 'subscriber' ? (
-          <NavLink to='/dashboard/subscriber-home'>Dashboard</NavLink>
+          <NavLink to='/dashboard/user-home'>Dashboard</NavLink>
         ) : null}
       </li>
       <li>
-        <NavLink to='/dashboard/selected-product'>
+        <NavLink to='/dashboard/selected-products'>
           <div>
             <p className='mt-1'>
               <FaShoppingCart></FaShoppingCart>

@@ -30,7 +30,7 @@ const SelectedProducts = () => {
           <button
             className='btn btn-warning btn-sm'
             disabled={cart.length === 0}>
-            <Link to='/dashboard/payment'>PAY</Link>
+            <Link to='/dashboard/payment'>Checkout</Link>
           </button>
         </div>
 

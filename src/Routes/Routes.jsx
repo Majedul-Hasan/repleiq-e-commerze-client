@@ -13,6 +13,7 @@ import UpdateProduct from '../pages/Dashboard/AdminDashboard/UpdateProduct';
 import ListUsers from '../pages/Dashboard/AdminDashboard/ListUsers';
 import SubscriberHome from '../pages/Dashboard/SubscriberDashboard/SubscriberHome';
 import SelectedProducts from '../pages/Dashboard/SubscriberDashboard/SelectedProducts';
+import Checkout from '../pages/Dashboard/SubscriberDashboard/Checkout';
 
 export const router = createBrowserRouter([
   {
@@ -77,12 +78,20 @@ export const router = createBrowserRouter([
             element: <UpdateProduct />,
           },
           {
-            path: 'subscriber-home',
+            path: 'user-home',
             element: <SubscriberHome />,
           },
           {
             path: 'selected-products',
             element: <SelectedProducts />,
+          },
+          {
+            path: 'my-orders',
+            element: <SelectedProducts />,
+          },
+          {
+            path: 'payment',
+            element: <Checkout />,
           },
         ],
       },
