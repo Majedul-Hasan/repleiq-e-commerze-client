@@ -11,6 +11,8 @@ import Dashboard from '../Layouts/Dashboard';
 import ListProduct from '../pages/Dashboard/AdminDashboard/ListProduct';
 import UpdateProduct from '../pages/Dashboard/AdminDashboard/UpdateProduct';
 import ListUsers from '../pages/Dashboard/AdminDashboard/ListUsers';
+import SubscriberHome from '../pages/Dashboard/SubscriberDashboard/SubscriberHome';
+import SelectedProducts from '../pages/Dashboard/SubscriberDashboard/SelectedProducts';
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +75,14 @@ export const router = createBrowserRouter([
           {
             path: 'update-product/:id',
             element: <UpdateProduct />,
+          },
+          {
+            path: 'subscriber-home',
+            element: <SubscriberHome />,
+          },
+          {
+            path: 'selected-products',
+            element: <SelectedProducts />,
           },
         ],
       },

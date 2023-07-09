@@ -2,8 +2,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
+import useCart from '../../../hooks/useCart';
 
 const Header = () => {
+  const [cart] = useCart();
+
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [role] = useAdmin();
@@ -35,20 +38,18 @@ const Header = () => {
               </span>
             </span>
           </NavLink>
-        ) : role?.role === 'instructor' ? (
-          <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
-        ) : role?.role === 'student' ? (
-          <NavLink to='/dashboard/student-home'>Dashboard</NavLink>
+        ) : role?.role === 'subscriber' ? (
+          <NavLink to='/dashboard/subscriber-home'>Dashboard</NavLink>
         ) : null}
       </li>
       <li>
-        <NavLink to='/dashboard/selected-classes'>
+        <NavLink to='/dashboard/selected-product'>
           <div>
             <p className='mt-1'>
               <FaShoppingCart></FaShoppingCart>
             </p>
             <span className='absolute -top-1 -right-2 badge bg-amber-500'>
-              {/* {cart?.length || 0} */}0{' '}
+              {cart?.length || 0}
             </span>
           </div>
         </NavLink>
