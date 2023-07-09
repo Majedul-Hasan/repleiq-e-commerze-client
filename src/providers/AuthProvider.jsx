@@ -12,7 +12,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
-import axios from 'axios';
+import axios from '../util/axiosInstance';
 
 export const AuthContext = createContext(null);
 
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
       console.log('current user', currentUser);
       if (currentUser) {
         axios
-          .post(`${import.meta.env.VITE_API}/jwt`, {
+          .post(`/jwt`, {
             email: currentUser.email,
           })
           .then((data) => {

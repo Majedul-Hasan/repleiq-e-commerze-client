@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 import protect from '../assets/Online research_Monochromatic.svg';
@@ -6,6 +6,7 @@ import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import SocialLogin from './shared/SocialLogin';
 import { Helmet } from 'react-helmet-async';
+import axiosInstance from '../util/axiosInstance';
 
 const SignupPage = () => {
   const [firebaseError, setFirebaseError] = useState(null);
@@ -17,6 +18,7 @@ const SignupPage = () => {
     reset,
     watch,
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
@@ -24,6 +26,25 @@ const SignupPage = () => {
         console.log(response.user);
         updateUserProfile(data.name, data.image);
         reset();
+      })
+      .then(() => {
+        console.log(data);
+        const { name, email, address, phone, image } = data;
+
+        const saveUser = {
+          name,
+          email,
+          address,
+          phone,
+          image,
+          joinAt: Date.now(),
+          role: 'subscriber',
+        };
+        console.log('user profile info updated');
+        axiosInstance.post(`${import.meta.env.VITE_API}/users`, saveUser);
+        reset();
+
+        // navigate('/');
       })
       .catch((error) => {
         const errorMessage = error.message;
