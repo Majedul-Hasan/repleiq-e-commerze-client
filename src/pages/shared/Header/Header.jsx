@@ -1,14 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Header = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
-
-  const role = {
-    role: 'admin',
-  };
+  const [role] = useAdmin();
 
   const handleLogOut = () => {
     logOut()

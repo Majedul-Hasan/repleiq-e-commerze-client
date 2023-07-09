@@ -44,7 +44,7 @@ const SignupPage = () => {
         axiosInstance.post(`${import.meta.env.VITE_API}/users`, saveUser);
         reset();
 
-        // navigate('/');
+        navigate('/');
       })
       .catch((error) => {
         const errorMessage = error.message;
