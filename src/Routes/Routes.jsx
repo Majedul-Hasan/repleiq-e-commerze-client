@@ -25,6 +25,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage></HomePage>,
+        loader: () => fetch(`${import.meta.env.VITE_API}/products`),
       },
       {
         path: '/shop',
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
         path: '/shop/:id',
         element: <ProductDetail></ProductDetail>,
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API}/products${params.id}`),
+          fetch(`${import.meta.env.VITE_API}/products/${params.id}`),
       },
 
       {

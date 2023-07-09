@@ -1,13 +1,19 @@
 import { Helmet } from 'react-helmet-async';
 import BannerComp from '../shared/BannerComp/BannerComp';
 import ProductInfo from './ProductInfo';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
+import { handleAddToCartAction } from '../shared/handleAddToCart';
 
 const ProductDetail = () => {
-  // const product = useLoaderData();
-  const product = {};
+  const product = useLoaderData();
+  const { user } = useAuth();
+  const [, refetch] = useCart();
+  const navigate = useNavigate();
 
   const handleAddToCart = (course) => {
-    // handleAddToCartAction(course, user, refetch, navigate);
+    handleAddToCartAction(course, user, refetch, navigate);
     console.log('object');
   };
   return (
